@@ -1,25 +1,33 @@
-import logo from './logo.svg';
+import React  from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Layout from './components/Layout/Layout';
+import FoodBuilder from './containers/FoodBuilder/FoodBuilder';
+import Checkout from "./containers/Checkout/Checkout";
+import ContactData from './containers/Checkout/ContactData/ContactData';
+import Wrapper from './hoc/Wrapper';
+
+import {Route, Routes} from "react-router-dom";
+
+class App extends React.Component{
+  render (){
+    return (
+        <Wrapper>
+        <div className='container text-center'> 
+          <Layout>
+            <Routes>
+              <Route path='/checkout/*' element={<Checkout />} />
+              <Route path='/' exact element={<FoodBuilder />} />
+              {/* <Route path='/contactData' element={<ContactData />} /> */}
+            </Routes>
+          </Layout>
+        </div>
+        </Wrapper>
+   
+      
+    )
+  }
+
 }
 
 export default App;
